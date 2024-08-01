@@ -20,8 +20,8 @@ class ProductFactory extends Factory
             'name' => fake()->name(),
             'price' => fake()->randomNumber(5),
             'category_id' => fake()->numberBetween(1,3),
-            'status' => fake()->numberBetween(1,2),
-            'is_favorite' => fake()->numberBetween(1,2),
+            'status' => fake()->numberBetween(0,1),
+            'is_favorite' => fake()->numberBetween(0,1),
 
 
 

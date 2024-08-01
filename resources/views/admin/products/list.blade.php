@@ -56,7 +56,7 @@
                                 <tbody>
                                     @foreach ($products as $product)
                                         <tr>
-                                            <td>{{ ($products->currentPage() - 1) * $products->perPage() + $loop->iteration }}
+                                            <td>{{ $products->firstItem()+$loop->index}}
                                             </td>
                                             <td width="100"><img src="{{ asset('storage/images/'.$product->image) }}" width="100" alt=""></td>
                                             <td>{{ $product->name }}</td>
@@ -64,10 +64,10 @@
                                             <td>{{ number_format($product->price) }}</td>
                                             <td>{{ $product->isfavorite_text }}</td>
                                             <td>{{ $product->status_text }}</td>
-                                            <td><a href="{{ route('admin.product.edit', encrypt($product->id)) }}"
+                                            <td><a href="{{ route('admin.product.edit',['id' => encrypt($product->id), 'page' => request()->page]) }}"
                                                     class="btn btn-primary bbtn-sm mr-2">Edit</a>
 
-                                                <a href="{{ route('admin.product.delete', encrypt($product->id)) }}"
+                                                <a href="{{ route('admin.product.delete', ['id' => encrypt($product->id), 'page' => request()->page])}}"
                                                     class="btn btn-danger bbtn-sm">Delete</a>
                                             </td>
                                         </tr>

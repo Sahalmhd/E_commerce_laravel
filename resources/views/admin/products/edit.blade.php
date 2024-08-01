@@ -34,8 +34,10 @@
           </div>
           <!-- /.card-header -->
           <!-- form start -->
-          <form action="{{ route('admin.product.update') }}" method="post" enctype="multipart/form-data">
+          <form action="{{ route('admin.product.update',['page' => $page]) }}" method="post" enctype="multipart/form-data">
             @csrf
+            <input type="hidden" name="page" value="{{ $page }}">
+
             <input type="hidden" name="product_id" value="{{  encrypt($product->id)}}">
             <div class="card-body ">
               <div class="form-group">
